@@ -1,4 +1,4 @@
-if (window.matchMedia("(max-width:650px)").matches) {
+if (window.matchMedia("(max-width:1000px)").matches) {
     alert('Please Switch to landscape mode for better experience!!')
 }
 let score = 0;
