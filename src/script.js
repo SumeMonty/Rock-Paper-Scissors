@@ -1,6 +1,6 @@
-// if (window.matchMedia("(max-width:900px)").matches) {
-//     alert('Please Switch to landscape mode for better experience!!')
-// }
+if (window.matchMedia("(max-width:650px)").matches) {
+    alert('Please Switch to landscape mode for better experience!!')
+}
 let score = 0;
 window.onload = function () {
     
