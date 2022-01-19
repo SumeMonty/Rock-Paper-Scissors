@@ -1,4 +1,4 @@
-<h2 align="center"> 🪨 Rock-Paper-Scissors </h2>
+<h1 align="center"> 🪨 Rock-Paper-Scissors </h1>
 
 ## Step 1:- Follow The Link https://sumemonty.github.io/Rock-Paper-Scissors/
 ## Step 2:- Play the game by clicking/tapping on the items.
