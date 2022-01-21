@@ -1,6 +1,6 @@
-// if (window.matchMedia("(max-width:900px)").matches) {
-//     alert('Please Switch to landscape mode for better experience!!')
-// }
+if (window.matchMedia("(max-width:1000px)").matches) {
+    alert('Please Switch to landscape mode for better experience!!')
+}
 let score = 0;
 let timesPlayed = 0;
 window.onload = function () {
@@ -117,7 +117,6 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
     document.querySelector('#button-div').style.display = 'block';
     document.querySelector('#play-again-btn').addEventListener('click', createBody);
 }
-
 /* light-dark mode toggle */
 const toggleSwitch = document.getElementById('toggle-switch');
 
