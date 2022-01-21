@@ -2,15 +2,14 @@
 //     alert('Please Switch to landscape mode for better experience!!')
 // }
 let score = 0;
+let timesPlayed = 0;
 window.onload = function () {
-    
-        createBody();
-    
+    createBody();
 }
 function createBody() {
     document.querySelector('#button-div').style.display = 'none';
-    document.getElementById('flex-box-rps-div').innerHTML = 
-    `
+    document.getElementById('flex-box-rps-div').innerHTML =
+        `
     <img
         id="rock"
         src="src/img/rock.jpg"
@@ -36,17 +35,19 @@ function createBody() {
 }
 function rpsGame(yourChoice) {
     var humanChoice, botChoice;
+
+    timesPlayed++;
     humanChoice = yourChoice.id;
-    console.log("Your Choice:", humanChoice);
+    // console.log("Your Choice:", humanChoice);
 
     botChoice = numberToChoice(randToRpsInt());
-    console.log("Computer Choice:", botChoice);
+    // console.log("Computer Choice:", botChoice);
 
     results = decideWinner(humanChoice, botChoice); // [0,1] | human lost, bot won
-    console.log("Results:", results)
+    // console.log("Results:", results)
 
     message = finalMessage(results); // You Won!
-    console.log(message)
+    // console.log(message)
     rpsFrontEnd(yourChoice.id, botChoice, message);
 }
 
@@ -73,11 +74,12 @@ function decideWinner(yourChoice, computerChoice) {
 
 function finalMessage([yourScore, computerScore]) {
     if (yourScore === 0) {
-        return { 'message': "You Lost!", 'color': 'red','score': 0  }
+        return { 'message': "You Lost!", 'color': 'red', 'score': 0 }
     } else if (yourScore === 0.5) {
-        return { 'message': "Draw!", 'color': 'blue','score': 0 };
+        return { 'message': "Draw!", 'color': 'blue', 'score': 0 };
     } else {
-        return { 'message': "You Won!", 'color': 'green','score': 1 }
+        score++;
+        return { 'message': "You Won!", 'color': 'green', 'score': 1 }
     }
 }
 // const rock = document.getElementById('rock');
@@ -103,9 +105,10 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
     humanDiv.innerHTML = `<img src=${imagesDatabase[humanImageChoice]} height=150 width=150>`;
     messageDiv.innerHTML = `<h1 style="color: ${finalMessage.color}"> ${finalMessage.message}</h1>`;
     botDiv.innerHTML = `<img src=${imagesDatabase[botImageChoice]} height=150 width=150>`;
-    score += finalMessage.score;
-    
+    // score += finalMessage.score;
+
     document.querySelector("#score-h2 span:nth-of-type(2)").innerHTML = score;
+    document.querySelector("#times-h2 span:nth-of-type(2)").innerHTML = timesPlayed;
 
     document.getElementById('flex-box-rps-div').appendChild(humanDiv);
     document.getElementById('flex-box-rps-div').appendChild(messageDiv);
@@ -114,3 +117,10 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
     document.querySelector('#button-div').style.display = 'block';
     document.querySelector('#play-again-btn').addEventListener('click', createBody);
 }
+
+/* light-dark mode toggle */
+const toggleSwitch = document.getElementById('toggle-switch');
+
+toggleSwitch.addEventListener('change', () => {
+    document.body.classList.toggle('dark');
+});
